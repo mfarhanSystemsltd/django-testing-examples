@@ -43,6 +43,9 @@ steps:
     pytest
     coverage run --source='.' manage.py test myapp
     coverage report
+    coverage xml
+    ls
+    pwd
   displayName: 'Run tests'
 
 # - task: PublishTestResults@2
