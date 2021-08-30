@@ -43,8 +43,13 @@ steps:
     pytest --cov=. --cov-report=html
   displayName: 'Run tests'
 
-- task: PublishTestResults@2
+# - task: PublishTestResults@2
+#   inputs:
+#     testResultsFiles: "**/TEST-*.xml"
+#     testRunTitle: 'Python $(PYTHON_VERSION)'
+#   condition: succeededOrFailed()
+
+- task: PublishCodeCoverageResults@1
   inputs:
-    testResultsFiles: "**/TEST-*.xml"
-    testRunTitle: 'Python $(PYTHON_VERSION)'
-  condition: succeededOrFailed()
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
