@@ -57,4 +57,4 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage.xml'
