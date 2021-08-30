@@ -49,12 +49,6 @@ steps:
     pwd
   displayName: 'Run tests'
 
-# - task: PublishTestResults@2
-#   inputs:
-#     testResultsFiles: "**/TEST-*.xml"
-#     testRunTitle: 'Python $(PYTHON_VERSION)'
-#   condition: succeededOrFailed()
-
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: "Cobertura"
