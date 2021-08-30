@@ -41,7 +41,6 @@ steps:
 - script: |
     pytest
     pytest --cov=. --cov-report=html
-    chromium htmlcov/index.html
   displayName: 'Run tests'
 
 - task: PublishTestResults@2
