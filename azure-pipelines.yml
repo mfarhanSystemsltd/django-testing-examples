@@ -34,13 +34,15 @@ steps:
 - script: |
     python -m pip install --upgrade pip setuptools wheel
     pip install django==3.2.6
+    pip install coverage 
     pip install -r testing-requirements.txt
     pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
 
 - script: |
     pytest
-    pytest --cov=. --cov-report=html
+    coverage run --source='.' manage.py test myapp
+    coverage report
   displayName: 'Run tests'
 
 # - task: PublishTestResults@2
