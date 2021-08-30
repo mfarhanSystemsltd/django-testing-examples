@@ -1,4 +1,5 @@
 # Python Django
+
 # Test a Django project on multiple versions of Python.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
@@ -58,3 +59,8 @@ steps:
   inputs:
     codeCoverageTool: 'JaCoCo'
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage.xml'
+    
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'CTest'
+    testResultsFiles: '/coverage.xml'
