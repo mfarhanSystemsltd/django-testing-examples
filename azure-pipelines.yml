@@ -35,24 +35,25 @@ steps:
 - script: |
     python -m pip install --upgrade pip setuptools wheel
     pip install django==3.2.6
-    pip install coverage 
+   
     pip install -r testing-requirements.txt
     pip install unittest-xml-reporting
+ 
   displayName: 'Install prerequisites'
 
 - script: |
-    pytest 
-    ls
-    pwd
+    pip install pytest pytest-azurepipelines
+    pip install pytest-cov
+    pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
   displayName: 'Run tests cases'
 
-- script: |
-    coverage run --source='.' manage.py test myapp
-    coverage report
-    coverage xml
-    ls
-    pwd
-  displayName: 'Run tests coverage'
+# - script: |
+#     coverage run --source='.' manage.py test myapp
+#     coverage report
+#     coverage xml
+#     ls
+#     pwd
+#   displayName: 'Run tests coverage'
 
 - task: PublishCodeCoverageResults@1
   inputs:
