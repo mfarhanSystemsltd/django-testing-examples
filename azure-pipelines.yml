@@ -41,7 +41,7 @@ steps:
   displayName: 'Install prerequisites'
 
 - script: |
-    pytest --junitxml
+    pytest -v — junitxml=junit/test-results.xml
     coverage run --source='.' manage.py test myapp
     coverage report
     coverage xml
@@ -58,4 +58,4 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/coverage.xml'
+    testResultsFiles: 'junit/test-results.xml'
