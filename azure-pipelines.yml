@@ -41,7 +41,7 @@ steps:
   displayName: 'Install prerequisites'
 
 - script: |
-    pytest
+    pytest --junitxml
     coverage run --source='.' manage.py test myapp
     coverage report
     coverage xml
