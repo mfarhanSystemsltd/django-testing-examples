@@ -54,7 +54,8 @@ steps:
     codeCoverageTool: "Cobertura"
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage.xml'
     
+
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'CTest'
-    testResultsFiles: '/coverage.xml'
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
